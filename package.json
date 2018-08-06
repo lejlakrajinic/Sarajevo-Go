@@ -1,0 +1,22 @@
+{
+  "name": "sarajevogo",
+  "version": "1.0.0",
+  "description": "tourist guide",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lejlakrajinic/Sarajevo-Go.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lejlakrajinic/Sarajevo-Go/issues"
+  },
+  "homepage": "https://github.com/lejlakrajinic/Sarajevo-Go#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
