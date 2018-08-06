@@ -189,12 +189,12 @@ input[type="submit"],a,.agileinfo_social_icons li{
 	text-transform:uppercase;
 	font-size:14px;
 	color:#fff;
-	background:#cd31c1;
+	background:#72a411;
 	border:none;
 	cursor:pointer;
 }
 .w3_main_grid_right input[type="submit"]:hover{
-	background:#df49d3;
+	background:#72a411;
 }
 /*-- radio button --*/
 span {
