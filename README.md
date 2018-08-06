@@ -1,11 +1,4 @@
 # Sarajevo-Go
 Tourist guide through the city of Sarajevo.
- lex
 
-1231231456
-
-
-lejla123
-
-
-145
+lejla
