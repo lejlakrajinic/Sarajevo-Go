@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Touché</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Favicons
+    ================================================== -->
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+
+<!-- Stylesheet
+    ================================================== -->
+<link rel="stylesheet" type="text/css"  href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/nivo-lightbox/nivo-lightbox.css">
+<link rel="stylesheet" type="text/css" href="css/nivo-lightbox/default.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
+
+<style>
+    #map {
+            width: 100%;
+            height: 600px;
+            background-color: bisque;
+          }
+
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+
+      #infowindow-content {
+        display: none;
+      }
+
+      #map #infowindow-content {
+        display: inline;
+      }
+    #menu.navbar-default {
+        background-color: black;
+    }
+    
+    .rate_widget {
+    overflow:   visible;
+    position:   relative;
+    width:      200px;
+    height:     30px;
+}
+.ratings_stars {
+    background: url('star_empty.png') no-repeat;
+    float:      left;
+    height:     28px;
+    padding:    2px;
+    width:      32px;
+}
+.ratings_vote {
+    background: url('star_full.png') no-repeat;
+}
+.ratings_over {
+    background: url('star_highlight.png') no-repeat;
+}
+    
+    .total_votes {
+    background: #eaeaea;
+    top: 50px;
+    left: 50px;
+    padding: 5px;
+    position:   absolute;  
+} 
+.movie_choice {
+    font: 10px verdana, sans-serif;
+    margin: 0 auto 40px auto;
+    width: 180px;
+}
+
+
+</style>
+
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation
+    ==========================================-->
+<nav id="menu" class="navbar navbar-default navbar-fixed-top" style="color: black">
+  <div class="container"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand page-scroll" href="#page-top">Sarajevo Go</a> </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about" class="page-scroll">Log out</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+</nav>
+
+<!-- About Section -->
+<div id="about">
+  <br>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 ">
+          <h2 class="menu-section-title">Admin Info</h2>
+          <hr>
+          <div class="about-text">
+              <div>
+              <h6>Name:</h6>
+                <div id="placeName"></div>
+              <h6>Email:</h6>
+                <div id="placeLocation"></div>
+              <h6>Adress:</h6>
+                <div id="placeAdress"></div>
+          </div>
+      </div>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <h2 class="menu-section-title">Favorites</h2>
+        <hr>
+              <div class="about-text">
+                  <div>
+                  <h6>Restaurant 1</h6>
+                    <div id="placeName"></div>
+                    <h6>Hotel 1</h6>
+                    <div id="placeLocation"></div>
+                  <h6>Park 1</h6>
+                    <div id="placeAdress"></div>
+                  <h6>Restaurant 2</h6>
+                    <div id="placeLocation"></div>
+                  <h6>Park 2</h6>
+                    <div id="placeLocation"></div>
+                  <h6>Restaurant 3</h6>
+                    <div id="placeAdress"></div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Users Section -->
+    <div id="restaurant-menu">
+      <div class="cars-control">
+        <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="menu-section-title">Users</h2>
+                   <tr>
+                      <h6>Name:</h6>
+                      <td>
+                         <input class="form-control" placeholder="Name" ng-model="car.name" />
+                      </td>
+                      <h6>Email:</h6>
+                      <td>
+                         <input class="form-control" placeholder="Email" type="number" ng-model="car.adress" />
+                      </td>
+                      <h6>Password:</h6>
+                      <td>
+                         <input class="form-control" placeholder="Passwprd" ng-model="car.phone" />
+                      </td>
+                   </tr>
+                </div>
+             </div>
+             <br>
+             <div class="row" style="text-align: center; margin-top: 20px;">
+                <div class="col-lg-12">
+                   <td>
+                      <div class="btn-group">
+                         <button class="btn btn-primary btn-manji" ng-click="add_car()">Add</button>
+                         <button class="btn btn-success btn-manji" ng-click="update_car()">Update</button>
+                         <button class="btn btn-info btn-manji" ng-click="clear(car)">Clear</button>
+                      </div>
+                   </td>
+                </div>
+             </div>
+             <br>
+             <br>
+             <div class="row carsResponsive">
+                <div class="col-md-12 col-sm-6">
+                   <table class="table table-hover">
+                      <thead>
+                         <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                         </tr>
+                      </thead>
+                      <tbody>
+                         <tr ng-controller="carsController" ng-repeat="car in cars_list">
+                            <td>{{car.name}}</td>
+                            <td>{{car.adress}}</td>
+                            <td>{{car.phone}}</td>
+                            <td>
+                               <div class="btn-group">
+                                  <button class="btn btn-warning" ng-click="edit_car(car)">Edit</button>
+                                  <button class="btn btn-danger" ng-click="delete_car(car._id, car.car_name)">Delete</button>
+                               </div>
+                            </td>
+                         </tr>
+                      </tbody>
+                   </table>
+                </div>
+             </div>
+</div>
+
+         </div>
+
+<!-- Places Section -->
+<div id="restaurant-menu">
+        <div class="cars-control">
+          <div class="row">
+                  <div class="col-lg-6">
+                      <h2 class="menu-section-title">Places</h2>
+                      <tr>
+                          <h6>Name:</h6>
+                          <td>
+                             <input class="form-control" placeholder="Name" ng-model="car.name" />
+                          </td>
+                          <h6>Adress:</h6>
+                          <td>
+                             <input class="form-control" placeholder="Adress" type="number" ng-model="car.adress" />
+                          </td>
+                          <h6>Phone:</h6>
+                          <td>
+                             <input class="form-control" placeholder="Phone" ng-model="car.phone" />
+                          </td>
+                          <h6>Picture:</h6>
+                           <td>
+                             <input class="form-control" placeholder="Picture" ng-model="car.car_picture" />
+                            </td>
+                          </tr>
+                  </div>
+               </div>
+               <br>
+               <div class="row" style="text-align: center; margin-top: 20px;">
+                  <div class="col-lg-12">
+                     <td>
+                        <div class="btn-group">
+                           <button class="btn btn-primary btn-manji" ng-click="add_car()">Add</button>
+                           <button class="btn btn-success btn-manji" ng-click="update_car()">Update</button>
+                           <button class="btn btn-info btn-manji" ng-click="clear(car)">Clear</button>
+                        </div>
+                     </td>
+                  </div>
+               </div>
+               <br>
+               <br>
+               <div class="row carsResponsive">
+                  <div class="col-md-12 col-sm-6">
+                     <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Adress</th>
+                                <th>Phone number</th>
+                                <th>Pictures</th>
+                             </tr>
+                        </thead>
+                        <tbody>
+                           <tr ng-controller="carsController" ng-repeat="car in cars_list">
+                              <td>{{car.name}}</td>
+                             <td>{{car.adress}}</td>
+                             <td>{{car.phone}}</td>
+                             <td><img style="height: 50px; width: 110px;" src="{{car.car_picture}}"></td>
+                             <td>
+                                 <div class="btn-group">
+                                    <button class="btn btn-warning" ng-click="edit_car(car)">Edit</button>
+                                    <button class="btn btn-danger" ng-click="delete_car(car._id, car.car_name)">Delete</button>
+                                 </div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+  </div>
+  
+           </div>
+        
+<div id="footer">
+  <div class="container text-center">
+    <div class="col-md-6">
+      <h3>Address</h3>
+      <div class="contact-item">
+        <p>Alojza Benca 1,</p>
+        <p>Sarajevo, BIH</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h3>Contact Info</h3>
+      <div class="contact-item">
+        <p>Phone: +38761482633</p>
+        <p>Email: lejla.krajinic@gmail.com</p>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid text-center copyrights">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="social">
+        <ul>
+          <li><a href="#https://www.facebook.com/lejla.krajinic"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+        </ul>
+      </div>
+      <p>&copy; 2017 All rights reserved. Designed by Lejla</p>
+    </div>
+  </div>
+</div>
+
+
+  <script>
+    var currentPlace, map;
+    function getParameterByName(name, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+    function changeContent(place){
+            document.getElementById("placeName").innerText = place.name;
+            document.getElementById("placeLocation").innerText = place.formatted_address;
+            document.getElementById("placePhone").innerText = place.international_phone_number;
+            var placeImages = document.getElementById("placeImages");
+            for(let img of place.photos){
+              var imgElem = document.createElement("img");
+              imgElem.src = img.getUrl({'maxWidth': 250, 'maxHeight': 250});
+              placeImages.appendChild(imgElem);
+            }
+    }
+
+    function processRecommended(places){
+      //filter by rating
+      var recommended = places.filter( restaurant => restaurant.rating >= currentPlace.rating);
+      var bounds = new google.maps.LatLngBounds();
+      for(let restaurant of recommended){
+          var infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+              map: map,
+              position: restaurant.geometry.location
+        });
+        marker.setOptions({'opacity': 0.5}) // recommended are transparent
+        bounds.extend(restaurant.geometry.location)
+        map.fitBounds(bounds);
+        google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent('<div><strong>' + restaurant.name + '</strong><br>' +
+            'Place ID: ' + restaurant.place_id + '<br>' +
+            '<strong>RECOMMENDED</strong><br>' +
+            restaurant.formatted_address + '</div>');
+            infowindow.open(map, this);
+             document.getElementById("recPlaceName").innerText = restaurant.name;
+        });
+      }
+    }
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -33.866, lng: 151.196},
+          zoom: 15
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        var service = new google.maps.places.PlacesService(map);
+
+        service.getDetails({
+          placeId: getParameterByName("placeId")
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            changeContent(place);
+            currentPlace = place;
+            var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location
+            });
+            var bounds = new google.maps.LatLngBounds();
+            bounds.extend(place.geometry.location)
+            map.fitBounds(bounds);
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                'Place ID: ' + place.place_id + '<br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+
+            //CONTENT BASED RECOMMENDATION
+            service.nearbySearch({
+              location: place.geometry.location,
+              radius: 200,
+              type: ['restaurant']
+            }, processRecommended);
+          }
+        });
+      }
+    </script>
+    
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+
+    // This is the first thing we add ------------------------------------------
+    $(document).ready(function() {
+        
+        $('.rate_widget').each(function(i) {
+            var widget = this;
+            var out_data = {
+                widget_id : $(widget).attr('id'),
+                fetch: 1
+            };
+            $.post(
+                'ratings.php',
+                out_data,
+                function(INFO) {
+                    $(widget).data( 'fsr', INFO );
+                    set_votes(widget);
+                },
+                'json'
+            );
+        });
+    
+
+        $('.ratings_stars').hover(
+            // Handles the mouseover
+            function() {
+                $(this).prevAll().andSelf().addClass('ratings_over');
+                $(this).nextAll().removeClass('ratings_vote'); 
+            },
+            // Handles the mouseout
+            function() {
+                $(this).prevAll().andSelf().removeClass('ratings_over');
+                // can't use 'this' because it wont contain the updated data
+                set_votes($(this).parent());
+            }
+        );
+        
+        
+        // This actually records the vote
+        $('.ratings_stars').bind('click', function() {
+            var star = this;
+            var widget = $(this).parent();
+            
+            var clicked_data = {
+                clicked_on : $(star).attr('class'),
+                widget_id : $(star).parent().attr('id')
+            };
+            $.post(
+                'ratings.php',
+                clicked_data,
+                function(INFO) {
+                    widget.data( 'fsr', INFO );
+                    set_votes(widget);
+                },
+                'json'
+            ); 
+        });
+        
+        
+        
+    });
+
+    function set_votes(widget) {
+
+        var avg = $(widget).data('fsr').whole_avg;
+        var votes = $(widget).data('fsr').number_votes;
+        var exact = $(widget).data('fsr').dec_avg;
+    
+        window.console && console.log('and now in set_votes, it thinks the fsr is ' + $(widget).data('fsr').number_votes);
+        
+        $(widget).find('.star_' + avg).prevAll().andSelf().addClass('ratings_vote');
+        $(widget).find('.star_' + avg).nextAll().removeClass('ratings_vote'); 
+        $(widget).find('.total_votes').text( votes + ' votes recorded (' + exact + ' rating)' );
+    }
+    // END FIRST THING
+    
+    
+    
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpf_XdU-RCoghEuJa9ubYGgwZb-WSKAOk&libraries=places&callback=initMap"
+         async defer></script>
+
+<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
+<script type="text/javascript" src="js/bootstrap.js"></script> 
+<script type="text/javascript" src="js/SmoothScroll.js"></script> 
+<script type="text/javascript" src="js/nivo-lightbox.js"></script> 
+<script type="text/javascript" src="js/jquery.isotope.js"></script> 
+<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
+<script type="text/javascript" src="js/contact_me.js"></script> 
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
