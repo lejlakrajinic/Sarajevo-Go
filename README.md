@@ -23,11 +23,12 @@ We want the general client to get appropriate information about tourist attracti
 This ties in with our real site targets: 
 
     Give essential information about tourist locations
-    Login to our web site
-    Subscribe to our blog RSS feed
-    Follow us on social media channels like twitter and Facebook
-    Contribute blog comments
-    Download resources for tourist 
+    Login and Logout to our web site
+    Give directions to the place wanted
+    Give recommendations on nice places to visit
+    Leave ratings
+    Add, edit and delete places for owners
+    Make a favorites list taht makes it easier to find favorite places afterwards
 
 Navigation structure
 
