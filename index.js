@@ -1,5 +1,11 @@
 const express = require('express')
-const app = express()
+ 
+const app = express();
+
+ 
+/*const server = app.listen(3000, function(){
+    console.log('server is running at %s .', server.address().port);
+});*/
 
 /*
 var port = process.env.PORT || 3000;
