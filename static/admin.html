@@ -236,7 +236,12 @@
                           </td>
                           <h6>Picture:</h6>
                            <td>
-                             <input class="form-control" placeholder="Picture" ng-model="car.car_picture" />
+                              <input id="input-b5" name="input-b5[]" type="file" multiple>
+                                <script>
+                                  $(document).on('ready', function() {
+                                    $("#input-b5").fileinput({showCaption: false, dropZoneEnabled: false});
+                                  });
+                                </script>
                             </td>
                           </tr>
                   </div>
