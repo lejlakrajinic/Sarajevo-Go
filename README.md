@@ -28,7 +28,8 @@ This ties in with our real site targets:
     Give recommendations on nice places to visit
     Leave ratings
     Add, edit and delete places for owners
-    Make a favorites list taht makes it easier to find favorite places afterwards
+    Add, edit and delete users for admins
+    Make a favorites list that makes it easier to find favorite places afterwards
 
 Navigation structure
 
