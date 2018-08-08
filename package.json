@@ -4,7 +4,6 @@
   "description": "tourist guide",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,5 +23,8 @@
     "nodeman": "^1.1.2",
     "nodemon": "^1.18.3"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  }
 }

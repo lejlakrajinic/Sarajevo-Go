@@ -1,6 +1,15 @@
 const express = require('express')
 const app = express()
 
+/*
+var port = process.env.PORT || 3000;
+
+app.get("/", function(req,res){
+    res.send("Welcome to Node");
+});
+
+app.listen(port);*/
+
 const bodyparser = require("body-parser");
 const MongoClient = require('mongodb').MongoClient;
 var MongoId = require('mongodb').ObjectID;
