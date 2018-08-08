@@ -1,0 +1,81 @@
+
+      <div class="col-md-12">
+        <div ng-view></div>
+      </div>
+          
+      <script>
+            // This example requires the Places library. Include the libraries=places
+            // parameter when you first load the API. For example:
+            // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+      
+            var map;
+            var infowindow;
+      
+            function initMap() {
+              var pyrmont = {lat: 43.84864, lng: 18.35644};
+      
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: pyrmont,
+                zoom: 15
+              });
+      
+              infowindow = new google.maps.InfoWindow();
+              var service = new google.maps.places.PlacesService(map);
+              service.nearbySearch({
+                location: pyrmont,
+                radius: 5000,
+                type: ['restaurant']
+              }, processResults);
+            }
+      
+          function processResults(results, status, pagination) {
+              if (status !== google.maps.places.PlacesServiceStatus.OK) {
+                return;
+              } else {
+                createMarkers(results);
+      
+                if (pagination.hasNextPage) {
+                  var moreButton = document.getElementById('more');
+      
+                  moreButton.disabled = false;
+      
+                  moreButton.addEventListener('click', function() {
+                    moreButton.disabled = true;
+                    pagination.nextPage();
+                  });
+                }
+              }
+            }
+      
+            function createMarkers(places) {
+              var bounds = new google.maps.LatLngBounds();
+              var placesList = document.getElementById('places');
+      
+              for (var i = 0, place; place = places[i]; i++) {
+                var image = {
+                  url: place.icon,
+                  size: new google.maps.Size(71, 71),
+                  origin: new google.maps.Point(0, 0),
+                  anchor: new google.maps.Point(17, 34),
+                  scaledSize: new google.maps.Size(25, 25)
+                };
+      
+                var marker = new google.maps.Marker({
+                  map: map,
+                  icon: image,
+                  title: place.name,
+                  position: place.geometry.location
+                });
+      
+                placeItem = document.createElement("li");
+                placeLink = document.createElement("a");
+                placeLink.href = "placedetails.html?placeId="+place.place_id;
+                placeLink.innerHTML = place.name; 
+                placeItem.appendChild(placeLink);
+                placesList.appendChild(placeItem);
+      
+                bounds.extend(place.geometry.location);
+              }
+              map.fitBounds(bounds);
+            }
+      </script>

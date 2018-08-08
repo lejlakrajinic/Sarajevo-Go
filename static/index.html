@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="gosarajevo-app" ng-controller="siteController">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,20 +9,20 @@
 
 <!-- Favicons
     ================================================== -->
-<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+<link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="assets/img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="assets/img/apple-touch-icon-114x114.png">
 
 <!-- Bootstrap -->
-<link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" type="text/css"  href="assets/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome/css/font-awesome.css">
 
 <!-- Stylesheet
     ================================================== -->
-<link rel="stylesheet" type="text/css"  href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/nivo-lightbox/nivo-lightbox.css">
-<link rel="stylesheet" type="text/css" href="css/nivo-lightbox/default.css">
+<link rel="stylesheet" type="text/css"  href="assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="assets/css/nivo-lightbox/nivo-lightbox.css">
+<link rel="stylesheet" type="text/css" href="assets/css/nivo-lightbox/default.css">
 <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
@@ -88,172 +88,44 @@
 </style>
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-<!-- Navigation
-    ==========================================-->
-<nav id="menu" class="navbar navbar-default navbar-fixed-top">
-  <div class="container"> 
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand page-scroll" href="#page-top">Sarajevo Go</a> </div>
-    
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="signin.html" class="page-scroll">Sign in</a></li>
-      </ul>
-    </div>
-    <!-- /.navbar-collapse --> 
-  </div>
-</nav>
-<!-- Header -->
-<header id="header">
-  <div class="intro">
-    <div class="overlay">
-      <div class="container">
-        <div class="row">
-          <div class="intro-text">
-            <h1>Sarajevo Go</h1>
-            <p>Restaurants / Hotels / Shopps / Parks</p>
-            <a href="signup.html" class="btn btn-custom btn-lg page-scroll">Sign up</a> </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-<!-- About Section -->
-<div id="about">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-6 ">
-        <div class="about-img"><img src="img/about.jpg" class="img-responsive" alt=""></div>
-      </div>
-      <div class="col-xs-12 col-md-6">
-        <div class="about-text">
-          <h2>About us</h2>
-          <hr>
-          <p>Whether you are planning to stay in a cosy little hostel, treat yourself with a luxury hotel, planning a unforgetable night, a quite dinner at a great restaurant or just plan a sightseeing Sarajevo Go will help you find your way in  the lovely city of Sarajevo.With great tools to help you plan your perfect day in Sarajevo like tracking of the nearest hotels, resturants, parks and shopps.Sarajevo Go is the way to go. </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Footer -->
-<div id="footer">
-  <div class="container text-center">
-    <div class="col-md-6">
-      <h3>Address</h3>
-      <div class="contact-item">
-        <p>Alojza Benca 1,</p>
-        <p>Sarajevo, BIH</p>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <h3>Contact Info</h3>
-      <div class="contact-item">
-        <p>Phone: +38761482633</p>
-        <p>Email: lejla.krajinic@gmail.com</p>
-      </div>
-    </div>
-  </div>
-  <div class="container-fluid text-center copyrights">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="social">
-        <ul>
-          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-        </ul>
-      </div>
-      <p>&copy; 2018 All rights reserved. Designed by Lejla</p>
-    </div>
-  </div>
-</div>
-    
-<script>
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
-      var map;
-      var infowindow;
-
-      function initMap() {
-        var pyrmont = {lat: 43.84864, lng: 18.35644};
-
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: pyrmont,
-          zoom: 15
-        });
-
-        infowindow = new google.maps.InfoWindow();
-        var service = new google.maps.places.PlacesService(map);
-        service.nearbySearch({
-          location: pyrmont,
-          radius: 5000,
-          type: ['restaurant']
-        }, processResults);
-      }
-
-    function processResults(results, status, pagination) {
-        if (status !== google.maps.places.PlacesServiceStatus.OK) {
-          return;
-        } else {
-          createMarkers(results);
-
-          if (pagination.hasNextPage) {
-            var moreButton = document.getElementById('more');
-
-            moreButton.disabled = false;
-
-            moreButton.addEventListener('click', function() {
-              moreButton.disabled = true;
-              pagination.nextPage();
-            });
-          }
-        }
-      }
-
-      function createMarkers(places) {
-        var bounds = new google.maps.LatLngBounds();
-        var placesList = document.getElementById('places');
-
-        for (var i = 0, place; place = places[i]; i++) {
-          var image = {
-            url: place.icon,
-            size: new google.maps.Size(71, 71),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(17, 34),
-            scaledSize: new google.maps.Size(25, 25)
-          };
-
-          var marker = new google.maps.Marker({
-            map: map,
-            icon: image,
-            title: place.name,
-            position: place.geometry.location
-          });
-
-          placeItem = document.createElement("li");
-          placeLink = document.createElement("a");
-          placeLink.href = "placedetails.html?placeId="+place.place_id;
-          placeLink.innerHTML = place.name; 
-          placeItem.appendChild(placeLink);
-          placesList.appendChild(placeItem);
-
-          bounds.extend(place.geometry.location);
-        }
-        map.fitBounds(bounds);
-      }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlG-DvhvXzAd3Mjy_HgiaO2guVtc-NYDY&libraries=places&callback=initMap" async defer></script>
-<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-<script type="text/javascript" src="js/bootstrap.js"></script> 
-<script type="text/javascript" src="js/SmoothScroll.js"></script> 
-<script type="text/javascript" src="js/nivo-lightbox.js"></script> 
-<script type="text/javascript" src="js/jquery.isotope.js"></script> 
-<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
-<script type="text/javascript" src="js/contact_me.js"></script> 
-<script type="text/javascript" src="js/main.js"></script>
+  <div ng-include="'gosarajevo.html'"></div>
 </body>
+
+<script src="assets/js/angular.min.js"></script>
+<script src="assets/js/angular-route.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlG-DvhvXzAd3Mjy_HgiaO2guVtc-NYDY&libraries=places&callback=initMap" async defer></script>
+<script type="text/javascript" src="assets/js/jquery.1.11.1.js"></script> 
+<script type="text/javascript" src="assets/js/bootstrap.js"></script> 
+<script type="text/javascript" src="assets/js/SmoothScroll.js"></script> 
+<script type="text/javascript" src="assets/js/nivo-lightbox.js"></script> 
+<script type="text/javascript" src="assets/js/jquery.isotope.js"></script> 
+<script type="text/javascript" src="assets/js/jqBootstrapValidation.js"></script> 
+<script type="text/javascript" src="assets/js/contact_me.js"></script> 
+<script type="text/javascript" src="assets/js/main.js"></script>
+
+<script src="controllers/site-controller.js"></script>
+
+<script>
+  var app = angular.module("gosarajevo-app", ["ngRoute"]);
+
+  app.controller('siteController', SiteController);
+
+  app.config(function($routeProvider){
+    $routeProvider
+    .when("/", {
+      templateUrl : "views/main.html",
+      controller : "siteController"
+    })
+    .when("/admin", {
+      templateUrl : "views/admin.html",
+      controller: "siteController"
+    })
+    .when("/signup", {
+      templateUrl : "views/signup.html",
+      controller: "siteController"
+    })
+  })
+</script>
+
 </html>
