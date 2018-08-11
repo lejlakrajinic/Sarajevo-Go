@@ -60,6 +60,7 @@ app.get('/users', function(req,res){
 });
 
 app.post('/users', function(req, res){
+    console.log("Hello form post")
     var user = req.body;
     database.collection('users').insert(user, function(err, data){
         if(err) return console.log(err);

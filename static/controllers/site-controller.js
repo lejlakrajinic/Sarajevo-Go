@@ -2,10 +2,9 @@ function SiteController($scope, $http){
 
     get_users()
 
-    console.log("Hello from angular contorller!");
-
     $scope.add_user = function(){
-        $http.post('/user', $scope.user).then(function(data) {
+        console.log("Clicked add user!")
+        $http.post('/users', $scope.user).then(function(data) {
             $scope.users_list.push(data);
         });
     }
