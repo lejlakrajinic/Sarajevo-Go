@@ -27,6 +27,7 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
 
+
 <style>
     #map {
             width: 100%;
@@ -166,7 +167,7 @@
                       </td>
                       <h6>Password:</h6>
                       <td>
-                         <input class="form-control" placeholder="Passwprd" ng-model="user.password" />
+                         <input class="form-control" placeholder="Password" ng-model="user.password" />
                       </td>
                    </tr>
                 </div>
@@ -224,15 +225,15 @@
                       <tr>
                           <h6>Name:</h6>
                           <td>
-                             <input class="form-control" placeholder="Name" ng-model="car.name" />
+                             <input class="form-control" placeholder="Name" ng-model="Place.name" />
                           </td>
                           <h6>Adress:</h6>
                           <td>
-                             <input class="form-control" placeholder="Adress" type="number" ng-model="car.adress" />
+                             <input class="form-control" placeholder="Adress" type="number" ng-model="Place.adress" />
                           </td>
                           <h6>Phone:</h6>
                           <td>
-                             <input class="form-control" placeholder="Phone" ng-model="car.phone" />
+                             <input class="form-control" placeholder="Phone" ng-model="Place.phone" />
                           </td>
                           <h6>Picture:</h6>
                            <td>
@@ -251,9 +252,9 @@
                   <div class="col-lg-12">
                      <td>
                         <div class="btn-group">
-                           <button class="btn btn-primary btn-manji" ng-click="add_car()">Add</button>
-                           <button class="btn btn-success btn-manji" ng-click="update_car()">Update</button>
-                           <button class="btn btn-info btn-manji" ng-click="clear(car)">Clear</button>
+                           <button class="btn btn-primary btn-manji" ng-click="add_place()">Add</button>
+                           <button class="btn btn-success btn-manji" ng-click="update_place()">Update</button>
+                           <button class="btn btn-info btn-manji" ng-click="clear(place)">Clear</button>
                         </div>
                      </td>
                   </div>
@@ -474,7 +475,7 @@
         
         
     });
-
+</script>
     function set_votes(widget) {
 
         var avg = $(widget).data('fsr').whole_avg;
@@ -489,12 +490,6 @@
     }
     // END FIRST THING
     
-    
-    
-    </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpf_XdU-RCoghEuJa9ubYGgwZb-WSKAOk&libraries=places&callback=initMap"
-         async defer></script>
-
 <script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
 <script type="text/javascript" src="js/bootstrap.js"></script> 
 <script type="text/javascript" src="js/SmoothScroll.js"></script> 
@@ -504,4 +499,4 @@
 <script type="text/javascript" src="js/contact_me.js"></script> 
 <script type="text/javascript" src="js/main.js"></script>
 </body>
-</html>
+</html

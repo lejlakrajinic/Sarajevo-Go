@@ -1,18 +1,17 @@
 function SiteController($scope, $http){
-    console.log("EVO GA");
 
-    get_users();
+    get_users()
+
+    console.log("Hello from angular contorller!");
 
     $scope.add_user = function(){
         $http.post('/user', $scope.user).then(function(data) {
-            $scope.user = null;
             $scope.users_list.push(data);
-            //toastr.success('Car added successfully!');
         });
     }
 
     function get_users(){
-        $http.get('/user').then(function(res){
+        $http.get('/users').then(function(res){
             $scope.users_list = res.data;
         })
     }
@@ -29,9 +28,7 @@ function SiteController($scope, $http){
     $scope.update_user = function(){
         $http.put('/user/'+$scope.user._id, $scope.user).then(function(data){
           get_users();
-          //console.log($scope.car);
-          //toastr.info('You have successfully updated car!');
-          $scope.car = null;
+          $scope.user = null;
         });
       }
 
