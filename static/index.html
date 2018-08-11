@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="gosarajevo-app" ng-controller="siteController">
 <head>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sarajevo Go</title>
@@ -26,7 +27,9 @@
 <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
+<link rel="stylesheet" href="//unpkg.com/angular-toastr/dist/angular-toastr.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 
 <style>
@@ -105,13 +108,14 @@
 <script type="text/javascript" src="assets/js/jqBootstrapValidation.js"></script> 
 <script type="text/javascript" src="assets/js/contact_me.js"></script> 
 <script type="text/javascript" src="assets/js/main.js"></script>
-
 <script src="controllers/site-controller.js"></script>
+<script src="//unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
 
 <script>
-  var app = angular.module("gosarajevo-app", ["ngRoute"]);
+  var app = angular.module("gosarajevo-app", ["ngRoute", 'toastr']);
 
   app.controller('siteController', SiteController);
+
 
   app.config(function($routeProvider){
     $routeProvider

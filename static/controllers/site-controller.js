@@ -1,11 +1,13 @@
-function SiteController($scope, $http){
+function SiteController($scope, $http, toastr){
 
-    get_users()
+    get_users();
 
     $scope.add_user = function(){
-        console.log("Clicked add user!")
         $http.post('/users', $scope.user).then(function(data) {
+            $scope.user = null;
             $scope.users_list.push(data);
+            toastr.success("User added successfully")
+            get_users();
         });
     }
 
@@ -32,7 +34,7 @@ function SiteController($scope, $http){
       }
 
       $scope.delete_user = function(user_id){
-        $http.delete('/user/'+ user_id).then(function(data){
+        $http.delete('/users/'+ user_id).then(function(data){
             get_users();
         });
     }

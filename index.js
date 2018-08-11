@@ -31,12 +31,7 @@
 //        });
 // });
 // */
-// app.delete('/user/:user_id', function(req, res){
-//     database.collection('users').remove({_id: new MongoId(req.params.user_id)},
-//     function(err, data){
-//         res.json(data);
-//     });
-// });
+
 
 // MongoClient.connect('mongodb://localhost:27017/gosarajevo', function(err, client) {
 //     if (err) throw err;
@@ -46,6 +41,7 @@
 
 var express = require('express');
 var app = express();
+
 var mongojs = require('mongojs');
 var db = mongojs('localhost:27017/gosarajevo',['users']);
  var body_parser = require('body-parser');
@@ -62,11 +58,18 @@ app.get('/users', function(req,res){
 app.post('/users', function(req, res){
     console.log("Hello form post")
     var user = req.body;
-    database.collection('users').insert(user, function(err, data){
+    db.collection('users').insert(user, function(err, data){
         if(err) return console.log(err);
         res.setHeader('Content-Type', 'application/json');
         res.send(user);
     })
 });
+
+app.delete('/users/:user_id', function(req, res){
+    db.users.remove({'_id': db.ObjectId(req.params.user_id)}, function(err, docs) {
+        if (err) return err;
+        res.send(docs); // see results
+    });
+     });
 
 app.listen(process.env.PORT || 3000, () => console.log('Example app listening on port 3000!'))
