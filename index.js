@@ -30,22 +30,76 @@
 var express = require('express');
 var app = express();
 
+const jwt_secret = 'SJwt25Wq62SFfjiw92sR';
 var mongojs = require('mongojs');
+var jwt = require('jsonwebtoken');
 var db = mongojs('localhost:27017/gosarajevo',['users']);
  var body_parser = require('body-parser');
- app.use(body_parser.json());
 
 app.use(express.static(__dirname + '/static'));
+app.use(express.json()); // to support JSON-encoded bodies
+app.use(express.urlencoded({
+    extended: true
+})); // to support URL-encoded bodies
 
-app.get('/users', function(req,res){
-  db.users.find(function(err,docs){
-    res.json(docs)
-})
+app.use('/rest/v1/',function(request,response,next){
+    jwt.verify(request.get('JWT'), jwt_secret, function(error, decoded) {  
+        console.log(request.get('JWT'));    
+      if (error) {
+        response.status(401).send('Unauthorized access');    
+      } else {
+        db.users.findOne({'_id': db.ObjectId(decoded._id)}, function(error, user) {
+          if (error){
+            throw error;
+          }else{
+            if(user){
+              next();
+            }else{
+              response.status(401).send('Credentials are wrong.');
+            }
+          }
+        });
+      }
+    });  
+  })
+
+app.post('/login', function(request, response){
+    var user = request.body;
+  
+    db.users.findOne({'email': user.email, 'password': user.password}, function(error, user) {
+      if (error){
+        throw error;
+      }else{
+        if(user){
+          var token = jwt.sign(user, jwt_secret, {
+            expiresIn: 20000 
+          });
+      
+          response.send({
+            success: true,
+            message: 'Authenticated',
+            token: token
+          })
+        }else{
+          response.send({
+              success: false,
+              status: 401
+          })
+        }
+      }
+    });
+  });
+
+app.get('/rest/v1/users', function(req,res){
+    db.users.find(function(err,docs){
+        res.json(docs)
+    })
 });
 
 app.post('/users', function(req, res){
     console.log("Hello form post")
     var user = req.body;
+    
     db.collection('users').insert(user, function(err, data){
         if(err) return console.log(err);
         res.setHeader('Content-Type', 'application/json');
@@ -60,18 +114,23 @@ app.delete('/users/:user_id', function(req, res){
     });
      });
 
- app.put('/users/:user_id', function(req, res){  
-    console.log('2')  
-    db.collection('users').findAndModify(
-       {'_id': new db.ObjectId(req.params.user_id)},
-        [['_id','asc']], 
-        {$set : {name: req.body.name, email: req.body.email, password: req.body.password}},
-        function(err, doc) {
-            if (err){
-                console.warn(err.message);  
-            }else{
-                res.json(doc);
+ app.put('/users/:user_id', function(req, res){ 
+    db.users.findAndModify({
+        query: {
+            _id: mongojs.ObjectId(req.params.user_id)
+          },
+          update: {
+            $set: {
+              name: req.body.name,
+              email: req.body.email,
+              password: req.body.password
             }
+          },
+          new: true
+        }, function (err, doc) {
+          console.log('updated')
+          res.json(doc)
+        
         });
 });
 

@@ -1,7 +1,14 @@
-function SiteController($scope, $http, toastr,  $ngConfirm){
+function SiteController($scope, $http, toastr,  $ngConfirm, $location){
+
+
+    var config = {headers:  {
+      'Authorization': 'Basic TmljayBDZXJtaW5hcmE6cGFzc3dvcmQ=',
+      'Accept': 'application/json;odata=verbose',
+      "JWT" : localStorage.getItem('user')
+      }
+    };
 
     get_users();
-
 /*
     $scope.add_user = function(){
         $http.post('/users', $scope.user).then(function(data) {
@@ -12,8 +19,28 @@ function SiteController($scope, $http, toastr,  $ngConfirm){
         });
     }*/
 
+    $scope.login = function(credentials){
+      $http.post('/login', credentials).then(function(response){
+          if(typeof response.data.token != 'undefined'){
+              localStorage.setItem('user',response.data.token)
+              toastr.success('You are successfully logged in!', 'Login Success!');
+              $location.url("/userhome");
+          }
+          else if(response.data.success == false){
+              toastr.error('Login Error');
+          }
+      }),function(response){
+          console.log(error);
+      }
+    }
+
+    $scope.logout = function(){
+      localStorage.clear();
+      toastr.info("Successfully logged out!", "Logged Out!");
+    }
+
     function get_users(){
-        $http.get('/users').then(function(res){
+        $http.get('/rest/v1/users', config).then(function(res){
             $scope.users_list = res.data;
         })
     }
@@ -27,9 +54,8 @@ function SiteController($scope, $http, toastr,  $ngConfirm){
         }
     }
 
-    $scope.update_user = function(user_id){
-        console.log('1')
-        $http.put('/users/'+$scope.user._id, $scope.user).then(function(data){
+    $scope.update_user = function(user){
+        $http.put('/users/'+user._id, $scope.user).then(function(data){
           get_users();
           $scope.user = null;
         });
