@@ -31,34 +31,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="main">
 			<h1 class="w3layouts_head">Registration Form</h1>
 				<div class="w3layouts_main_grid">
-					<form action="#" method="post" class="w3_form_post">
+					<form action="#" method="post" class="w3_form_post" name="myForm" novalidate>
 						<div class="w3_agileits_main_grid w3l_main_grid">
 							<span class="agileits_grid">
 								<label>Your Name </label>
-								<input type="text" name="Task" placeholder="Your Name" required="">
+								<input type="text" name="name" placeholder="Your Name" ng-model="name" required>
+								<span style="color:green" ng-show="myForm.name.$invalid">
+								<span ng-show="myForm.name.$error.required">Username is required.</span></span>
 							</span>
 						</div>
 						<div class="w3_agileits_main_grid w3l_main_grid">
 							<span class="agileits_grid">
 								<label>Your Email </label>
-								<input type="text" name="Task" placeholder="Your Email" required="">
+								<input type="email" name="email" placeholder="Your Email" ng-model="email" required>
+								<span style="color:green" ng-show="myForm.email.$invalid">
+								<span ng-show="myForm.email.$error.required">Email is required.</span>
+								<span ng-show="myForm.email.$error.email">Invalid email address.</span></span>
 							</span>
 						</div>
 						<div class="w3_agileits_main_grid w3l_main_grid">
 							<span class="agileits_grid">
 								<label>Password </label>
-								<input type="text" name="Task" placeholder="Password" required="">
+								<input type="text" name="pw" placeholder="Password"  ng-model="pw" required>
+								<span style="color:green" ng-show="myForm.pw.$invalid">
+								<span ng-show="myForm.pw.$error.required">Password is required.</span>
 							</span>
 						</div>
 						<div class="w3_agileits_main_grid w3l_main_grid">
 							<span class="agileits_grid">
 								<label>Rewrite password </label>
-								<input type="text" name="Task" placeholder="Password" required="">
+								<input type="text" name="pw2" placeholder="Password" ng-model="pw2" required>
+								<span style="color:green" ng-show="myForm.pw2.$invalid">
+								<span ng-show="myForm.pw2.$error.required">Password is required.</span>
 							</span>
 						</div>
 					<div class="w3_main_grid">
 						<div class="w3_main_grid_right">
-							<input type="submit" value="Submit">
+							<input type="submit" value="Submit" ng-disabled="myForm.name.$invalid || myForm.email.$invalid || myForm.pw.$invalid || myForm.pw2.$invalid">
 						</div>
 					</div>
 				</form>
