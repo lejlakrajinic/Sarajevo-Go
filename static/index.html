@@ -28,8 +28,15 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
 <link rel="stylesheet" href="//unpkg.com/angular-toastr/dist/angular-toastr.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="path/to/angular-popeye/release/popeye.css" />
+<!-- angular-confirm files -->
+<link rel="stylesheet" type="text/css" href="assets/css/angular-confirm.css"/>
+<!--END angular-confirm files-->
+
+
+<!-- optional, if you want some default styles and animation --> 
+
 
 
 <style>
@@ -96,23 +103,26 @@
   <div ng-include="'gosarajevo.html'"></div>
 </body>
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="assets/js/angular.min.js"></script>
 <script src="assets/js/angular-route.js"></script>
 
+<script src="path/to/angular-popeye/release/popeye.js"></script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlG-DvhvXzAd3Mjy_HgiaO2guVtc-NYDY&libraries=places&callback=initMap" async defer></script>
-<script type="text/javascript" src="assets/js/jquery.1.11.1.js"></script> 
 <script type="text/javascript" src="assets/js/bootstrap.js"></script> 
-<script type="text/javascript" src="assets/js/SmoothScroll.js"></script> 
+<!--<script type="text/javascript" src="assets/js/SmoothScroll.js"></script> 
 <script type="text/javascript" src="assets/js/nivo-lightbox.js"></script> 
 <script type="text/javascript" src="assets/js/jquery.isotope.js"></script> 
 <script type="text/javascript" src="assets/js/jqBootstrapValidation.js"></script> 
 <script type="text/javascript" src="assets/js/contact_me.js"></script> 
-<script type="text/javascript" src="assets/js/main.js"></script>
+<script type="text/javascript" src="assets/js/main.js"></script>-->
 <script src="controllers/site-controller.js"></script>
 <script src="//unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+<script type="text/javascript"  src="assets/js/angular-confirm.js"></script>
 
 <script>
-  var app = angular.module("gosarajevo-app", ["ngRoute", 'toastr']);
+  var app = angular.module("gosarajevo-app", ["ngRoute", 'toastr', 'cp.ngConfirm']);
 
   app.controller('siteController', SiteController);
 

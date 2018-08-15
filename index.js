@@ -17,19 +17,7 @@
 //     })
 // });
 // /*
-// app.put('/user/:user_id', function(req, res){    
-//     database.collection('users').findAndModify(
-//        {_id: new MongoId(req.params.user_id)}, // query
-//        [['_id','asc']],  // sort order
-//        {$set : {name: req.body.name, email: req.body.email, password: req.body.password}}, // replacement, replaces only the field "hi"
-//        function(err, doc) {
-//            if (err){
-//                console.warn(err.message);  // returns error if no matching object found
-//            }else{
-//                res.json(doc);
-//            }
-//        });
-// });
+
 // */
 
 
@@ -71,5 +59,20 @@ app.delete('/users/:user_id', function(req, res){
         res.send(docs); // see results
     });
      });
+
+ app.put('/users/:user_id', function(req, res){  
+    console.log('2')  
+    db.collection('users').findAndModify(
+       {'_id': new db.ObjectId(req.params.user_id)},
+        [['_id','asc']], 
+        {$set : {name: req.body.name, email: req.body.email, password: req.body.password}},
+        function(err, doc) {
+            if (err){
+                console.warn(err.message);  
+            }else{
+                res.json(doc);
+            }
+        });
+});
 
 app.listen(process.env.PORT || 3000, () => console.log('Example app listening on port 3000!'))

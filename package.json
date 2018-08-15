@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/lejlakrajinic/Sarajevo-Go#readme",
   "dependencies": {
+    "angular-popeye": "^1.0.5",
     "angular-toastr": "^2.1.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
