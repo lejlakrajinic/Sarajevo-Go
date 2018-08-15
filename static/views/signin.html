@@ -21,15 +21,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 <!-- banner -->
+
 	<div class="center-container">
 		<div class="main">
 			<h1 class="w3layouts_head">Login Form</h1>
 				<div class="w3layouts_main_grid">
-					<form action="#" method="post" class="w3_form_post">
+					<form action="#" method="post" class="w3_form_post" name="myForm" novalidate>
 						<div class="w3_agileits_main_grid w3l_main_grid">
 							<span class="agileits_grid">
 								<label>Your Email </label>
-								<input type="text" name="Task" placeholder="Your Email" required="">
+								<input type="text" name="email" placeholder="Your Email" ng-model="email" required>
+								<span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+								<span ng-show="myForm.email.$error.required">Email is required.</span>
+							</span>
 							</span>
 						</div>
 						<div class="w3_agileits_main_grid w3l_main_grid">
@@ -40,13 +44,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					<div class="w3_main_grid">
 						<div class="w3_main_grid_right">
-							<input type="submit" value="Login">
+							<input type="submit" value="Login" ng-disabled="myForm.email.$dirty && myForm.email.$invalid">
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-<!-- //footer -->
+
+
 </body>
 </html>
