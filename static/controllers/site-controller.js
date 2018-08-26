@@ -88,6 +88,15 @@ function SiteController($scope, $http, toastr,  $ngConfirm, $location){
           })
         }
 
+        $scope.register = function(){
+          $http.post('/register', $scope.reguser).then(function(data){
+            $scope.reguser = null;
+            toastr.success("You are successfully registered! Please Login!", "Registration Successfull!");
+            $location.url('/signin');
+            $scope.reg_users_list.push(data);
+          });
+        }
+
   
     $scope.delete_user = function(user_id, user_name){
         $ngConfirm({

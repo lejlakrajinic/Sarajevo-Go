@@ -89,6 +89,17 @@ app.post('/login', function(request, response){
     });
   });
 
+  app.post('/register', function(req, res) {
+    req.body._id = null;
+    var user = req.body;
+    console.log(user);
+    db.collection('users').insert(user, function(err, data) {
+        if (err) return console.log(err);
+        res.setHeader('Content-Type', 'application/json');
+        res.send(user);
+    })
+  });
+
 app.get('/rest/v1/users', function(req,res){
     db.users.find(function(err,docs){
         res.json(docs)
