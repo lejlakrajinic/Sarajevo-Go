@@ -222,81 +222,74 @@
          </div>
 
 <!-- Places Section -->
-<div id="restaurant-menu">
-        <div class="cars-control">
-          <div class="row">
-                  <div class="col-lg-6">
-                      <h2 class="menu-section-title">Places</h2>
-                      <tr>
-                          <h6>Name:</h6>
-                          <td>
-                             <input class="form-control" placeholder="Name" ng-model="Place.name" />
-                          </td>
-                          <h6>Adress:</h6>
-                          <td>
-                             <input class="form-control" placeholder="Adress" type="number" ng-model="Place.adress" />
-                          </td>
-                          <h6>Phone:</h6>
-                          <td>
-                             <input class="form-control" placeholder="Phone" ng-model="Place.phone" />
-                          </td>
-                          <h6>Picture:</h6>
-                           <td>
-                              <input id="input-b5" name="input-b5[]" type="file" multiple>
-                                <script>
-                                  $(document).on('ready', function() {
-                                    $("#input-b5").fileinput({showCaption: false, dropZoneEnabled: false});
-                                  });
-                                </script>
-                            </td>
-                          </tr>
+<    <div id="restaurant-menu">
+  <div class="cars-control">
+    <div class="row">
+            <div class="col-lg-6">
+                <h2 class="menu-section-title">Users</h2>
+                <form name="myForm" novalidate>
+               <tr>
+                  <h6>Name:</h6>
+                  <td>
+                     <input class="form-control" type="text" name="user" placeholder="Name" ng-model="user.name" required />
+                     <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+                     <span ng-show="myForm.user.$error.required">Username is required.</span></span>
+
+                  </td>
+                  <h6>Email:</h6>
+                  <td>
+                     <input class="form-control" placeholder="Email" type="text" ng-model="user.email" />
+                  </td>
+                  <h6>Password:</h6>
+                  <td>
+                     <input class="form-control" placeholder="Password" ng-model="user.password" />
+                  </td>
+               </tr>
+            </div>
+         </div>
+         <br>
+         <div class="row" style="text-align: center; margin-top: 20px;">
+            <div class="col-lg-12">
+               <td>
+                  <div class="btn-group">
+                     <button class="btn btn-primary btn-manji" ng-click="add_user()" ng-disabled="myForm.user.$dirty && myForm.user.$invalid">Add</button>
+                     <button class="btn btn-success btn-manji" ng-click="update_user(user)">Update</button>
+                     <button class="btn btn-info btn-manji" ng-click="clear(user)">Clear</button>
                   </div>
-               </div>
-               <br>
-               <div class="row" style="text-align: center; margin-top: 20px;">
-                  <div class="col-lg-12">
-                     <td>
-                        <div class="btn-group">
-                           <button class="btn btn-primary btn-manji" ng-click="add_place()">Add</button>
-                           <button class="btn btn-success btn-manji" ng-click="update_place()">Update</button>
-                           <button class="btn btn-info btn-manji" ng-click="clear(place)">Clear</button>
-                        </div>
-                     </td>
-                  </div>
-               </div>
-               <br>
-               <br>
-               <div class="row carsResponsive">
-                  <div class="col-md-12 col-sm-6">
-                     <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Adress</th>
-                                <th>Phone number</th>
-                                <th>Pictures</th>
-                             </tr>
-                        </thead>
-                        <tbody>
-                           <tr ng-controller="carsController" ng-repeat="car in cars_list">
-                              <td>{{car.name}}</td>
-                             <td>{{car.adress}}</td>
-                             <td>{{car.phone}}</td>
-                             <td><img style="height: 50px; width: 110px;" src="{{car.car_picture}}"></td>
-                             <td>
-                                 <div class="btn-group">
-                                    <button class="btn btn-warning" ng-click="edit_car(car)">Edit</button>
-                                    <button class="btn btn-danger" ng-click="delete_car(car._id, car.car_name)">Delete</button>
-                                 </div>
-                              </td>
-                           </tr>
-                        </tbody>
-                     </table>
-                  </div>
-               </div>
-  </div>
-  
-           </div>
+               </td>
+            </div>
+         </div>
+         <br>
+         <br>
+         <div class="row carsResponsive">
+            <div class="col-md-12 col-sm-6">
+               <table class="table table-hover">
+                  <thead>
+                     <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat="user in users_list">
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.password}}</td>
+                        <td>
+                           <div class="btn-group">
+                              <button class="btn btn-warning" ng-click="edit_user(user)" ><i class="fas fa-edit"></i></button>
+                              <button class="btn btn-danger"  data-target="#deleteModal" data-toggle="modal" ng-click="delete_user(user._id,user.name)"><i class="fas fa-trash-alt"></i></button>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+</div>
+
+     </div>
         
 <div id="footer">
   <div class="container text-center">
