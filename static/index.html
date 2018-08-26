@@ -29,7 +29,6 @@
 <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
 <link rel="stylesheet" href="//unpkg.com/angular-toastr/dist/angular-toastr.css" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-<link rel="stylesheet" href="path/to/angular-popeye/release/popeye.css" />
 <!-- angular-confirm files -->
 <link rel="stylesheet" type="text/css" href="assets/css/angular-confirm.css"/>
 <!--END angular-confirm files-->
@@ -107,8 +106,6 @@
 <script src="assets/js/angular.min.js"></script>
 <script src="assets/js/angular-route.js"></script>
 
-<script src="path/to/angular-popeye/release/popeye.js"></script>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlG-DvhvXzAd3Mjy_HgiaO2guVtc-NYDY&libraries=places&callback=initMap" async defer></script>
 <script type="text/javascript" src="assets/js/bootstrap.js"></script> 
 <!--<script type="text/javascript" src="assets/js/SmoothScroll.js"></script> 
@@ -149,6 +146,31 @@
       templateUrl: "views/userHome.html",
       controller: "siteController"
     })
+    .when("/hotels", {
+      templateUrl: "views/hotels.html",
+      controller: "siteController"
+    })
+    .when("/placedetailes", {
+      templateUrl: "views/placedetailes.html",
+      controller: "siteController"
+    })
+    .when("/restaurants", {
+      templateUrl: "views/restaurants.html",
+      controller: "siteController"
+    })
+    .when("/shopping", {
+      templateUrl: "views/shopping.html",
+      controller: "siteController"
+    })
+    .when("/sightsee", {
+      templateUrl: "views/sightsee.html",
+      controller: "siteController"
+    })
+    .when("/user", {
+      templateUrl: "views/user.html",
+      controller: "siteController"
+    })
+
   })
 </script>
 
