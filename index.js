@@ -33,7 +33,7 @@ var app = express();
 const jwt_secret = 'SJwt25Wq62SFfjiw92sR';
 var mongojs = require('mongojs');
 var jwt = require('jsonwebtoken');
-var db = mongojs('localhost:27017/gosarajevo',['users']);
+var db = mongojs('mongodb://lejla123:margita123@ds235022.mlab.com:35022/lejlabaza', ['users']);
  var body_parser = require('body-parser');
 
 app.use(express.static(__dirname + '/static'));
@@ -43,8 +43,7 @@ app.use(express.urlencoded({
 })); // to support URL-encoded bodies
 
 app.use('/rest/v1/',function(request,response,next){
-    jwt.verify(request.get('JWT'), jwt_secret, function(error, decoded) {  
-        console.log(request.get('JWT'));    
+    jwt.verify(request.get('JWT'), jwt_secret, function(error, decoded) {   
       if (error) {
         response.status(401).send('Unauthorized access');    
       } else {
@@ -97,7 +96,6 @@ app.get('/rest/v1/users', function(req,res){
 });
 
 app.post('/users', function(req, res){
-    console.log("Hello form post")
     var user = req.body;
     
     db.collection('users').insert(user, function(err, data){
@@ -128,10 +126,9 @@ app.delete('/users/:user_id', function(req, res){
           },
           new: true
         }, function (err, doc) {
-          console.log('updated')
           res.json(doc)
         
         });
 });
 
-app.listen(process.env.PORT || 3000, () => console.log('Example app listening on port 3000!'))
+app.listen(process.env.PORT || 4000, () => console.log('Example app listening on port 3000!'))
