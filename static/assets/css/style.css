@@ -184,7 +184,9 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 
 #menu {
 
-	padding: 20px;
+	padding-top: 40px;
+
+	padding-left: 0px;
 
 	transition: all 0.8s;
 
