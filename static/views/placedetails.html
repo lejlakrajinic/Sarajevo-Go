@@ -28,11 +28,7 @@
 <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
 
 <style>
-    #map {
-            width: 100%;
-            height: 600px;
-            background-color: bisque;
-          }
+  
 
       #infowindow-content .title {
         font-weight: bold;
@@ -48,38 +44,10 @@
     #menu.navbar-default {
         background-color: black;
     }
-    
-    .rate_widget {
-    overflow:   visible;
-    position:   relative;
-    width:      200px;
-    height:     30px;
-}
-.ratings_stars {
-    background: url('star_empty.png') no-repeat;
-    float:      left;
-    height:     28px;
-    padding:    2px;
-    width:      32px;
-}
-.ratings_vote {
-    background: url('star_full.png') no-repeat;
-}
-.ratings_over {
-    background: url('star_highlight.png') no-repeat;
-}
-    
-    .total_votes {
-    background: #eaeaea;
-    top: 50px;
-    left: 50px;
-    padding: 5px;
-    position:   absolute;  
-} 
-.movie_choice {
-    font: 10px verdana, sans-serif;
-    margin: 0 auto 40px auto;
-    width: 180px;
+
+#restInfo{
+  color: black;
+  padding-top: 20px;
 }
 
 
@@ -121,7 +89,7 @@
         <div class="about-text">
           <h2> Restaurant Info</h2>
           <hr>
-                <div>
+                <div id="restInfo">
                 <h6>Name:</h6>
                   <div id="placeName"></div>
                  <h6>Address:</h6>
@@ -163,7 +131,7 @@
     <h2>Want to make a reservation? Call <strong id="placePhone">1-887-654-3210</strong></h2>
   </div>
 </div>
-        <!-- Restaurant Menu Section -->
+        <!-- Restaurant Menu Section 
     <div id="restaurant-menu">
       <div class="section-title text-center center">
         <div class="overlay">
@@ -174,7 +142,7 @@
         </div>
       </div>
                   <div id="recPlaceName"></div>
-         </div>
+         </div>-->
         
 <div id="footer">
   <div class="container text-center">

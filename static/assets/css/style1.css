@@ -130,7 +130,7 @@ input[type="submit"],a,.agileinfo_social_icons li{
 	color:#fff;
 	font-style:normal;
 }
-.w3layouts_main_grid input[type="text"], #category, #category1, #risk, #priority, .agileits_w3layouts_main_gridr input[type="time"], .w3layouts_main_grid input[type="email"], .w3layouts_main_grid textarea {
+.w3layouts_main_grid input[type="text"], .w3layouts_main_grid input[type="password"], #category, #category1, #risk, #priority, .agileits_w3layouts_main_gridr input[type="time"], .w3layouts_main_grid input[type="email"], .w3layouts_main_grid textarea {
     outline: none;
     width: 68%;
     background:rgba(120, 109, 118, 0.36);
